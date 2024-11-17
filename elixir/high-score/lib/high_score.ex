@@ -18,7 +18,7 @@ defmodule HighScore do
   end
 
   def update_score(scores, name, score) do
-    scores |> add_player(name) |> Map.update!(name, &(&1 + score))
+    scores |> Map.update(name, score, &(&1 + score))
   end
 
   def get_players(scores) do
