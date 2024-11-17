@@ -29,22 +29,24 @@ defmodule HighSchoolSweetheart do
     #            **   **
     #              ***
     #               *
-
+    i1 = initials(full_name1)
+    i2 = initials(full_name2)
     
-    "" |>
-    Kernel.<>("     ******       ******\n") |>
-    Kernel.<>("   **      **   **      **\n") |>
-    Kernel.<>(" **         ** **         **\n") |>
-    Kernel.<>("**            *            **\n") |>
-    Kernel.<>("**                         **\n") |>
-    Kernel.<>("**     ") |> Kernel.<>(initials(full_name1)) |> Kernel.<>("  +  ") |> Kernel.<>(initials(full_name2)) |> Kernel.<>("     **\n") |>
-    Kernel.<>(" **                       **\n") |>
-    Kernel.<>("   **                   **\n") |>
-    Kernel.<>("     **               **\n") |>
-    Kernel.<>("       **           **\n") |>
-    Kernel.<>("         **       **\n") |>
-    Kernel.<>("           **   **\n") |>
-    Kernel.<>("             ***\n") |>
-    Kernel.<>("              *\n")
+    """
+         ******       ******
+       **      **   **      **
+     **         ** **         **
+    **            *            **
+    **                         **
+    **     #{i1}  +  #{i2}     **
+     **                       **
+       **                   **
+         **               **
+           **           **
+             **       **
+               **   **
+                 ***
+                  *
+    """
   end
 end
