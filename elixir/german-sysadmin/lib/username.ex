@@ -5,8 +5,7 @@ defmodule Username do
     [first | rest] = username
 
     case first do
-      # lower case letters a-z
-      first when first >= 97 and first <= 122 -> [first] ++ sanitize(rest)
+      first when first >= ?a and first <= ?z -> [first | sanitize(rest)]
       # ä becomes ae
       228 -> ~c"ae" ++ sanitize(rest)
       # ö becomes oe
@@ -16,8 +15,8 @@ defmodule Username do
       # ß becomes ss
       223 -> ~c"ss" ++ sanitize(rest)
       # allow underscores
-      95 -> [first] ++ sanitize(rest)
-      _ -> [] ++ sanitize(rest)
+      ?_ -> [first | sanitize(rest)]
+      _ -> sanitize(rest)
     end
     
   end
