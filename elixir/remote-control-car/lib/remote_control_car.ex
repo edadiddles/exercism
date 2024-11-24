@@ -2,13 +2,8 @@ defmodule RemoteControlCar do
   @enforce_keys [:nickname]
   defstruct [:nickname, battery_percentage: 100, distance_driven_in_meters: 0]
 
-  def new() do
-    %RemoteControlCar{nickname: "none"}
-  end
-
-  def new(nickname) do
-    car = new()
-    %{car | nickname: nickname}
+  def new(nickname \\ "none") do
+    %RemoteControlCar{nickname: nickname}
   end
   
   def display_distance(%RemoteControlCar{distance_driven_in_meters: distance_driven_in_meters}) do
