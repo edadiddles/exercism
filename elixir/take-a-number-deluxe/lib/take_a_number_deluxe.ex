@@ -77,7 +77,7 @@ defmodule TakeANumberDeluxe do
   def handle_info(:timeout, state), do: {:stop, :normal, state}
 
   @impl GenServer
-  def handle_info(msg, state) do
+  def handle_info(_, state) do
     timeout = Map.get(state, :auto_shutdown_timeout)
     {:noreply, state, timeout}
   end
