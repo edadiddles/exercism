@@ -31,9 +31,14 @@ pub fn apply_rules(
         |> result.try(rule4)
 
     case result {
-        Ok(g) if g.player == Black -> Game(g.white_captured_stones, g.black_captured_stones, White, g.error)
-        Ok(g) if g.player != Black -> Game(g.white_captured_stones, g.black_captured_stones, Black, g.error)
-        Ok(_) -> game
-        Error(str) -> Game(game.white_captured_stones, game.black_captured_stones, game.player, str)
+        Ok(g) -> Game(..g, player: change_player(g.player))
+        Error(str) -> Game(..game, error: str)
+    }
+}
+
+fn change_player(player: Player) -> Player {
+    case player {
+        White -> Black
+        Black -> White
     }
 }
