@@ -28,5 +28,5 @@ pub fn run_experiment(
     use a <- result.try(setup())
     use b <- result.try(action(a))
     use r <- result.try(record(a,b))
-    result.try(Ok(r), fn(x) { Ok(#(name, x)) })
+    Ok(#(name, r))
 }
