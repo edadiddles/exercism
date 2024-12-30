@@ -1,5 +1,5 @@
-import gleam/regex
-import gleam/option
+import gleam/regex.{Match}
+import gleam/option.{Some}
 
 pub fn is_valid_line(line: String) -> Bool {
     let assert Ok(re) = "\\[(ERROR|DEBUG|WARNING|INFO)\\]" |> regex.from_string
@@ -17,11 +17,7 @@ pub fn tag_with_user_name(line: String) -> String {
     let assert Ok(re) = "(?:User\\s+)(\\S+)" |> regex.from_string
     
     case re |> regex.scan(line) {
-        [match] -> {
-            let assert [m] = match.submatches
-            let assert option.Some(user) = m 
-            "[USER] " <> user <> " " <> line
-        }
+        [Match(submatches: [Some(user)], ..)] -> "[USER] " <> user <> " " <> line
         _ -> line
     }
 }
