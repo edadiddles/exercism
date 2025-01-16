@@ -70,12 +70,6 @@ func CategoryExpenses(in []Record, p DaysPeriod, c string) (float64, error) {
     if len(c_recs) == 0 {
         return 0.0, errors.New("unknown category " + c)
     }
-    f_recs := Filter(c_recs, ByDaysPeriod(p))
 
-    amt := 0.0
-    for _, rec := range f_recs {
-        amt += rec.Amount
-    }
-
-    return amt, nil
+    return TotalByPeriod(c_recs, p), nil
 }
