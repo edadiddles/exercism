@@ -9,7 +9,7 @@ func Bracket(input string) bool {
         if chk_bracket_open(curr_inpt) {
             brack_stack = append(brack_stack, input[i])
         } else if chk_bracket_closed(curr_inpt) {
-            brack, brack_stack = pop_stack(brack_stack)
+            brack = pop_stack(&brack_stack)
             if !chk_bracket_matched(brack, input[i]) {
                 is_unbalanced = true
                 break
@@ -24,13 +24,13 @@ func Bracket(input string) bool {
     return !is_unbalanced
 }
 
-func pop_stack(stack []byte) (byte, []byte) {
-    if len(stack) == 0 {
-        return '~', nil
+func pop_stack(stack *[]byte) byte {
+    if len(*stack) == 0 {
+        return '~'
     }
-    v := stack[len(stack)-1]
-    stack = stack[:len(stack)-1]
-    return v, stack
+    v := (*stack)[len(*stack)-1]
+    *stack = (*stack)[:len(*stack)-1]
+    return v
      
 }
 
