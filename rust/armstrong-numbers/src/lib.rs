@@ -6,7 +6,7 @@ pub fn is_armstrong_number(num: u32) -> bool {
     
     loop {
         digits.push(d%10);
-        d = d/10;
+        d /= 10;
         if d == 0 {
             break;
         }
@@ -19,5 +19,5 @@ pub fn is_armstrong_number(num: u32) -> bool {
         k += v.pow(n);
     }
 
-    return k == num
+    k == num
 }
