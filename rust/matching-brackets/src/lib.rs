@@ -15,20 +15,18 @@ pub fn brackets_are_balanced(string: &str) -> bool {
         if is_o_bracket {
             open_brackets.push(c);
         } else if is_c_bracket {
-            if open_brackets.len() == 0 {
+            if open_brackets.is_empty() {
                 return false
             }
 
             let o_bracket = open_brackets.pop().unwrap();
-            if o_bracket == '{' && c != '}' {
-                return false
-            } else if o_bracket == '[' && c != ']' {
-                return false
-            } else if o_bracket == '(' && c != ')' {
+            if o_bracket == '{' && c != '}' || 
+                o_bracket == '[' && c != ']' || 
+                    o_bracket == '(' && c != ')' {
                 return false
             }
         }
     }
 
-    open_brackets.len() == 0
+    open_brackets.is_empty()
 }
