@@ -31,13 +31,13 @@ defmodule GottaSnatchEmAll do
   def boring_cards([collection | last]) do
     last |> boring_cards(collection)
   end
-  def boring_cards([collection | last], accumulator) do
+  defp boring_cards([collection | last], accumulator) do
     last |> boring_cards(accumulator |> MapSet.intersection(collection))
   end
-  def boring_cards([collection], accumulator) do
+  defp boring_cards([collection], accumulator) do
     accumulator |> MapSet.intersection(collection)
   end
-  def boring_cards([], accumulator) do
+  defp boring_cards([], accumulator) do
     accumulator |> MapSet.to_list
   end
   def boring_cards([]) do
@@ -49,10 +49,10 @@ defmodule GottaSnatchEmAll do
   def total_cards([collection | last]) do
     last |> total_cards(collection) 
   end
-  def total_cards([collection | last], accumulator) do
+  defp total_cards([collection | last], accumulator) do
     last |> total_cards(accumulator |> MapSet.union(collection))
   end
-  def total_cards([], accumulator) do
+  defp total_cards([], accumulator) do
     accumulator |> MapSet.to_list |> Kernel.length
   end
   def total_cards([]) do
@@ -63,7 +63,7 @@ defmodule GottaSnatchEmAll do
   def split_shiny_cards(collection) do
     collection |> MapSet.split_with(fn str -> str |> String.contains?("Shiny") end) |> convert_to_lists
   end
-  def convert_to_lists({a, b}) do
+  defp convert_to_lists({a, b}) do
     {a |> MapSet.to_list, b |> MapSet.to_list}
   end
 end
