@@ -9,14 +9,14 @@ defmodule Strain do
   def keep(list, fun) do
     keep(list, fun, [])
   end
-  def keep([head | tail], fun, acc) do
+  defp keep([head | tail], fun, acc) do
     if fun.(head) do
       keep(tail, fun, [head | acc])
     else
       keep(tail, fun, acc)
     end
   end
-  def keep([], _, acc) do
+  defp keep([], _, acc) do
     acc |> Enum.reverse
   end
 
@@ -30,14 +30,14 @@ defmodule Strain do
   def discard(list, fun) do
     discard(list, fun, [])
   end
-  def discard([head | tail], fun, acc) do
+  defp discard([head | tail], fun, acc) do
     if !fun.(head) do
       discard(tail, fun, [head | acc])
     else
       discard(tail, fun, acc)
     end
   end
-  def discard([], _, acc) do
+  defp discard([], _, acc) do
     acc |> Enum.reverse
   end
 end
