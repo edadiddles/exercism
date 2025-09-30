@@ -1,0 +1,19 @@
+def square_root(number):
+    lo = 0
+    hi = float("inf")
+
+    q = 50
+    while True:
+        sq = q * q
+        
+        if sq == number:
+            return q
+        elif sq < number:
+            hi = q - 1
+        elif sq > number:
+            lo = q + 1
+        else:
+            assert("Something went wrong")
+
+        q = (hi - lo) // 2
+
