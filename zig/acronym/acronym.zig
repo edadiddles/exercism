@@ -4,10 +4,6 @@ const mem = std.mem;
 pub fn abbreviate(allocator: mem.Allocator, words: []const u8) mem.Allocator.Error![]u8 {
     var acronym: std.ArrayList(u8) = .empty;
 
-    if (words.len == 0) {
-        return acronym.toOwnedSlice(allocator);
-    }
-
     var isNewWord = true;
     for (words) |c| {
         if (isNewWord and std.ascii.isAlphabetic(c)) {
