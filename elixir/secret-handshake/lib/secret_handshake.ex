@@ -18,7 +18,7 @@ defmodule SecretHandshake do
     r_commands(code, ["wink", "double blink", "close your eyes", "jump"], [])
   end
 
-  def r_commands(code, [action | rem_actions], acc) do
+  defp r_commands(code, [action | rem_actions], acc) do
     acc = case Integer.mod(code, 2) do
       1 -> acc ++ [action]
       0 -> acc
@@ -26,7 +26,7 @@ defmodule SecretHandshake do
     r_commands(Kernel.div(code,2), rem_actions, acc)
   end
 
-  def r_commands(code, [], acc) do
+  defp r_commands(code, [], acc) do
     case Integer.mod(code, 2) do
       1 -> Enum.reverse(acc)
       0 -> acc

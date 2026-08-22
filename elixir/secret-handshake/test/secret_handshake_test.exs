@@ -46,7 +46,7 @@ defmodule SecretHandshakeTest do
       assert SecretHandshake.commands(0) == []
     end
 
-    rest "do nothing if lower 5 bits not set" do
+    test "do nothing if lower 5 bits not set" do
       assert SecretHandshake.commands(32) == []
     end
   end
